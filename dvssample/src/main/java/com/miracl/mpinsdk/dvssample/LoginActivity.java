@@ -106,6 +106,11 @@ public class LoginActivity extends AppCompatActivity implements EnterPinDialog.E
         }
     }
 
+    @Override
+    public void onPinCanceled() {
+
+    }
+
     private void validateLogin(String authCode) {
         // We use the auth code from the sdk to validate the login with a demo service
         final String clientService = getString(R.string.access_code_service_base_url);
@@ -115,9 +120,12 @@ public class LoginActivity extends AppCompatActivity implements EnterPinDialog.E
                 @Override
                 public void onValidate(boolean isSuccessful) {
                     if (isSuccessful) {
-                        mMessageDialog.show(
-                                "Successfully logged " + mCurrentUser.getId() + " to " + clientService + " with " + mCurrentUser
-                                        .getBackend());
+                        SampleApplication.setLoggedUser(mCurrentUser);
+                        if (mCurrentUser.canSign()) {
+                            startActivity(new Intent(LoginActivity.this, SignMessageActivity.class));
+                        } else {
+                            startActivity(new Intent(LoginActivity.this, DvsRegistrationActivity.class));
+                        }
                     } else {
                         mMessageDialog
                                 .show("Failed to validate login to " + clientService + " with " + mCurrentUser.getBackend());
@@ -127,11 +135,6 @@ public class LoginActivity extends AppCompatActivity implements EnterPinDialog.E
         } else {
             mMessageDialog.show("Failed to validate login");
         }
-    }
-
-    @Override
-    public void onPinCanceled() {
-
     }
 
     private void configureSdkAndCurrentUser() {

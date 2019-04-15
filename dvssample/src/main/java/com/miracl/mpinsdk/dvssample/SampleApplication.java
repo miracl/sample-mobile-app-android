@@ -1,16 +1,16 @@
 package com.miracl.mpinsdk.dvssample;
 
 import android.app.Application;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.miracl.mpinsdk.MPinMfaAsync;
-import com.miracl.mpinsdk.model.Status;
+import com.miracl.mpinsdk.model.User;
 
 public class SampleApplication extends Application {
 
     private static MPinMfaAsync sMPinMfa;
     private static String       sAccessCode;
+    private static User         sLoggedUser;
 
     @Override
     public void onCreate() {
@@ -30,5 +30,17 @@ public class SampleApplication extends Application {
 
     public static void setCurrentAccessCode(String accessCode) {
         sAccessCode = accessCode;
+    }
+
+    public static User getLoggedUser() {
+        return sLoggedUser;
+    }
+
+    public static void setLoggedUser(@Nullable User currentUser) {
+        sLoggedUser = currentUser;
+    }
+
+    public static boolean isUserLogged() {
+        return sLoggedUser != null;
     }
 }

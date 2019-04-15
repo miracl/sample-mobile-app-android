@@ -10,6 +10,15 @@
     <string name="identity_created">Identity Created</string>
     <string name="button_login">Login</string>
     <string name="label_registration_successful">Registration Successful</string>
+    <string name="label_authenticated_identity">You have been authenticated with identity:</string>
+    <string name="label_register_dvs">After you have been successfully authenticated you could register the identity to the DVS service in order to sign documents with it.
+Please, press the button to proceed.</string>
+    <string name="button_dvs_register">DVS register</string>
+    <string name="title_enter_pin_for_signing">Enter pin for signing</string>
+    <string name="label_dvs_registered_identity">An identity %1$s has been registered for DVS. Now you can sign documents with it.</string>
+    <string name="label_sign_message">Enter message to be signed</string>
+    <string name="hint_sign_message">message</string>
+    <string name="button_sign_message">Sign</string>
 
     <!-- M-Pin configuration -->
     <string name="mpin_backend" formatted="false" translatable="false">https://api.mpin.io</string>

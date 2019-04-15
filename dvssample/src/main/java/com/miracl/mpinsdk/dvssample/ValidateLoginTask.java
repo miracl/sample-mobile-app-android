@@ -1,19 +1,16 @@
 package com.miracl.mpinsdk.dvssample;
 
-import com.google.gson.Gson;
-
 import android.os.AsyncTask;
 
 import com.miracl.mpinsdk.dvssample.rest.AccessCodeServiceApi;
+import com.miracl.mpinsdk.dvssample.rest.Client;
 import com.miracl.mpinsdk.dvssample.rest.model.AccessCodeInfo;
 
 import java.io.IOException;
 
-import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Just an example of how a validation with auth code can be done with a demo service. Actual implementations can be different and
@@ -21,20 +18,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ValidateLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-    public interface ValidationListener {
-
-        void onValidate(boolean isSuccessful);
-    }
-
     private static final int HTTP_CODE_OK = 200;
 
-    private String             mAuthServiceUrl;
+    private String mBaseServiceUrl;
     private String             mAuthCode;
     private String             mUserId;
     private ValidationListener mListener;
 
-    public ValidateLoginTask(String authServiceUrl, String authCode, String userId, ValidationListener listener) {
-        mAuthServiceUrl = authServiceUrl;
+    public ValidateLoginTask(String baseServiceUrl, String authCode, String userId, ValidationListener listener) {
+        mBaseServiceUrl = baseServiceUrl;
         mAuthCode = authCode;
         mUserId = userId;
         mListener = listener;
@@ -42,14 +34,7 @@ public class ValidateLoginTask extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... voids) {
-        Retrofit retrofit;
-        try {
-            retrofit = new Retrofit.Builder().client(new OkHttpClient())
-                    .addConverterFactory(GsonConverterFactory.create(new Gson())).baseUrl(mAuthServiceUrl).build();
-        } catch (IllegalArgumentException exception) {
-            return false;
-        }
-
+        Retrofit retrofit = Client.getClient(mBaseServiceUrl);
         AccessCodeServiceApi accessCodeServiceApi = retrofit.create(AccessCodeServiceApi.class);
 
         try {
@@ -68,5 +53,10 @@ public class ValidateLoginTask extends AsyncTask<Void, Void, Boolean> {
         if (mListener != null) {
             mListener.onValidate(isSuccessful);
         }
+    }
+
+    public interface ValidationListener {
+
+        void onValidate(boolean isSuccessful);
     }
 }

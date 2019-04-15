@@ -1,20 +1,17 @@
 package com.miracl.mpinsdk.dvssample;
 
-import com.google.gson.Gson;
-
 import android.os.AsyncTask;
 
 import com.miracl.mpinsdk.MPinMFA;
 import com.miracl.mpinsdk.dvssample.rest.AccessCodeServiceApi;
+import com.miracl.mpinsdk.dvssample.rest.Client;
 import com.miracl.mpinsdk.dvssample.rest.model.AuthorizeUrlInfo;
 import com.miracl.mpinsdk.model.Status;
 
 import java.io.IOException;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * An example of how an authUrl can be obtained in order to pass it to the SDK and receive and accessCode
@@ -23,34 +20,19 @@ public class AccessCodeObtainingTask extends AsyncTask<Void, Void, Status> {
 
     private static final int HTTP_CODE_OK = 200;
 
-    public interface Callback {
-
-        void onSuccess();
-
-        void onFail(com.miracl.mpinsdk.model.Status status);
-    }
-
-    private String   mAuthServiceUrl;
+    private String mBaseServiceUrl;
     private Callback mCallback;
     private String   mAccessCode;
 
-    public AccessCodeObtainingTask(String authServiceUrl, Callback callback) {
-        mAuthServiceUrl = authServiceUrl;
+    public AccessCodeObtainingTask(String baseServiceUrl, Callback callback) {
+        mBaseServiceUrl = baseServiceUrl;
         mCallback = callback;
     }
 
     @Override
     protected com.miracl.mpinsdk.model.Status doInBackground(Void... voids) {
         MPinMFA mfaSdk = SampleApplication.getMfaSdk().getMfaSdk();
-        Retrofit retrofit;
-        try {
-            retrofit = new Retrofit.Builder().client(new OkHttpClient())
-                    .addConverterFactory(GsonConverterFactory.create(new Gson())).baseUrl(mAuthServiceUrl).build();
-        } catch (IllegalArgumentException exception) {
-            String exceptionMessage = exception.getMessage();
-            return new com.miracl.mpinsdk.model.Status(com.miracl.mpinsdk.model.Status.Code.HTTP_REQUEST_ERROR,
-                    "Invalid custom service URL");
-        }
+        Retrofit retrofit = Client.getClient(mBaseServiceUrl);
 
         AccessCodeServiceApi accessCodeServiceApi = retrofit.create(AccessCodeServiceApi.class);
 
@@ -88,5 +70,12 @@ public class AccessCodeObtainingTask extends AsyncTask<Void, Void, Status> {
         } else if (mCallback != null) {
             mCallback.onFail(status);
         }
+    }
+
+    public interface Callback {
+
+        void onSuccess();
+
+        void onFail(com.miracl.mpinsdk.model.Status status);
     }
 }
