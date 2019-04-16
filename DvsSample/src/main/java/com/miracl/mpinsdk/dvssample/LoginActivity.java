@@ -22,10 +22,10 @@ import java.util.List;
 
 public class LoginActivity extends AppCompatActivity implements EnterPinDialog.EventListener {
 
-    private User           mCurrentUser;
+    private User mCurrentUser;
     private EnterPinDialog mEnterPinDialog;
-    private View           mUserInfo;
-    private MessageDialog  mMessageDialog;
+    private View mUserInfo;
+    private MessageDialog mMessageDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

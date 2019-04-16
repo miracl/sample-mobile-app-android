@@ -21,7 +21,7 @@ public class VerifySignatureTask extends AsyncTask<Void, Void, Status> {
     private String mBaseServiceUrl;
     private VerifySignatureTask.Callback mCallback;
     private VerifySignatureInfo mResponse;
-    
+
     public VerifySignatureTask(String baseServiceUrl, String verificationData, String documentData, VerifySignatureTask.Callback callback) {
         mBaseServiceUrl = baseServiceUrl;
         mVerificationData = verificationData;

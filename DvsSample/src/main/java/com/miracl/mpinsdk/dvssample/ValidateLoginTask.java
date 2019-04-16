@@ -21,8 +21,8 @@ public class ValidateLoginTask extends AsyncTask<Void, Void, Boolean> {
     private static final int HTTP_CODE_OK = 200;
 
     private String mBaseServiceUrl;
-    private String             mAuthCode;
-    private String             mUserId;
+    private String mAuthCode;
+    private String mUserId;
     private ValidationListener mListener;
 
     public ValidateLoginTask(String baseServiceUrl, String authCode, String userId, ValidationListener listener) {

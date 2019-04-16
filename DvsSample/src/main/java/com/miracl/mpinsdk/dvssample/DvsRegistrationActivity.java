@@ -14,7 +14,7 @@ import com.miracl.mpinsdk.model.Status;
 public class DvsRegistrationActivity extends AppCompatActivity implements EnterPinDialog.EventListener {
 
     private EnterPinDialog mEnterPinDialog;
-    private MessageDialog  mMessageDialog;
+    private MessageDialog mMessageDialog;
 
     private boolean registrationStarted = false;
 
@@ -51,54 +51,60 @@ public class DvsRegistrationActivity extends AppCompatActivity implements EnterP
 
     private void startRegistrationDvs(String pin) {
         // Start the DVS registration process
-        SampleApplication.getMfaSdk().startRegistrationDvs(SampleApplication.getLoggedUser(), new String[] {pin}, new MPinMfaAsync.Callback<Void>() {
-
-            @Override
-            protected void onSuccess(@Nullable Void result) {
-                // The DVS registration process is started successfully
-                registrationStarted = true;
-                mEnterPinDialog = new EnterPinDialog(DvsRegistrationActivity.this, DvsRegistrationActivity.this);
-                mEnterPinDialog.setTitle(getString(R.string.title_enter_pin_for_signing));
-                mEnterPinDialog.show();
-            }
-
-            @Override
-            protected void onFail(final @NonNull Status status) {
-                runOnUiThread(new Runnable() {
+        SampleApplication.getMfaSdk().startRegistrationDvs(SampleApplication.getLoggedUser(),
+                new String[]{pin},
+                new MPinMfaAsync.Callback<Void>() {
 
                     @Override
-                    public void run() {
-                        // Starting DVS registration has failed
-                        mMessageDialog.show(status);
+                    protected void onSuccess(@Nullable Void result) {
+                        // The DVS registration process is started successfully
+                        registrationStarted = true;
+                        mEnterPinDialog = new EnterPinDialog(DvsRegistrationActivity.this,
+                                DvsRegistrationActivity.this);
+                        mEnterPinDialog.setTitle(getString(R.string.title_enter_pin_for_signing));
+                        mEnterPinDialog.show();
+                    }
+
+                    @Override
+                    protected void onFail(final @NonNull Status status) {
+                        runOnUiThread(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                // Starting DVS registration has failed
+                                mMessageDialog.show(status);
+                            }
+                        });
                     }
                 });
-            }
-        });
     }
 
     private void finishRegistrationDvs(String pin) {
         // Finish the DVS registration process
-        SampleApplication.getMfaSdk().finishRegistrationDvs(SampleApplication.getLoggedUser(), new String[]{pin}, new MPinMfaAsync.Callback<Void>() {
-
-            @Override
-            protected void onSuccess(@Nullable Void result) {
-                // The DVS registration for the user is complete
-                startActivity(new Intent(DvsRegistrationActivity.this, SignMessageActivity.class));
-                finish();
-            }
-
-            @Override
-            protected void onFail(final @NonNull Status status) {
-                runOnUiThread(new Runnable() {
+        SampleApplication.getMfaSdk().finishRegistrationDvs(SampleApplication.getLoggedUser(),
+                new String[]{pin},
+                new MPinMfaAsync.Callback<Void>() {
 
                     @Override
-                    public void run() {
-                        // Finishing DVS registration has failed
-                        mMessageDialog.show(status);
+                    protected void onSuccess(@Nullable Void result) {
+                        // The DVS registration for the user is complete
+                        startActivity(new Intent(DvsRegistrationActivity.this,
+                                SignMessageActivity.class));
+                        finish();
+                    }
+
+                    @Override
+                    protected void onFail(final @NonNull Status status) {
+                        runOnUiThread(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                // Finishing DVS registration has failed
+                                mMessageDialog.show(status);
+                            }
+                        });
                     }
                 });
-            }
-        });
     }
 
     private void init() {

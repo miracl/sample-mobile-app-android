@@ -13,15 +13,8 @@ public class EnterPinDialog extends Dialog {
 
     private static final int PIN_LENGTH = 4;
 
-    public interface EventListener {
-
-        void onPinEntered(String pin);
-
-        void onPinCanceled();
-    }
-
-    private EditText      mEnterPinInput;
-    private TextView      mTitle;
+    private EditText mEnterPinInput;
+    private TextView mTitle;
     private EventListener mEventListener;
 
     public EnterPinDialog(Context context, EventListener listener) {
@@ -41,8 +34,8 @@ public class EnterPinDialog extends Dialog {
     private void init() {
         setContentView(R.layout.dialog_enter_pin);
 
-        mTitle = (TextView) findViewById(R.id.enter_pin_title);
-        mEnterPinInput = (EditText) findViewById(R.id.enter_pin_input);
+        mTitle = findViewById(R.id.enter_pin_title);
+        mEnterPinInput = findViewById(R.id.enter_pin_input);
         mEnterPinInput.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -76,5 +69,12 @@ public class EnterPinDialog extends Dialog {
                 }
             }
         });
+    }
+
+    public interface EventListener {
+
+        void onPinEntered(String pin);
+
+        void onPinCanceled();
     }
 }

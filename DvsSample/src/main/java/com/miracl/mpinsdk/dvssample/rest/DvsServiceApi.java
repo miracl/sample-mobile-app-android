@@ -15,9 +15,7 @@ public interface DvsServiceApi {
     /**
      * POST request to create document hash
      *
-     * @param document
-     *   String
-     *
+     * @param document String
      * @return DocumentDvsInfo
      */
     @FormUrlEncoded
@@ -27,15 +25,12 @@ public interface DvsServiceApi {
     /**
      * POST request to verify document signature
      *
-     * @param verificationData
-     *   String
-     *
-     * @param documentData
-     *   String
-     *
+     * @param verificationData String
+     * @param documentData     String
      * @return VerifySignature
      */
     @FormUrlEncoded
     @POST("/login/VerifySignature")
-    Call<VerifySignatureInfo> verifySignature(@Field("verificationData") String verificationData, @Field("documentData") String documentData);
+    Call<VerifySignatureInfo> verifySignature(@Field("verificationData") String verificationData,
+                                              @Field("documentData") String documentData);
 }

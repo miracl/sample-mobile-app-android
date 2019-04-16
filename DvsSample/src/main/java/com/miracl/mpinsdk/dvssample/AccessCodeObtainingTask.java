@@ -22,7 +22,7 @@ public class AccessCodeObtainingTask extends AsyncTask<Void, Void, Status> {
 
     private String mBaseServiceUrl;
     private Callback mCallback;
-    private String   mAccessCode;
+    private String mAccessCode;
 
     public AccessCodeObtainingTask(String baseServiceUrl, Callback callback) {
         mBaseServiceUrl = baseServiceUrl;

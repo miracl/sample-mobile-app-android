@@ -19,13 +19,13 @@ import static android.view.View.GONE;
 
 public class RegisterUserActivity extends AppCompatActivity implements View.OnClickListener, EnterPinDialog.EventListener {
 
-    private EditText       mEmailInput;
-    private Button         mSubmitButton;
-    private View           mConfirmControls;
-    private Button         mConfirmButton;
-    private Button         mResendButton;
+    private EditText mEmailInput;
+    private Button mSubmitButton;
+    private View mConfirmControls;
+    private Button mConfirmButton;
+    private Button mResendButton;
     private EnterPinDialog mEnterPinDialog;
-    private MessageDialog  mMessageDialog;
+    private MessageDialog mMessageDialog;
 
     private User mCurrentUser;
 
@@ -89,6 +89,23 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onPinCanceled() {
         enableControls();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.register_submit_button:
+                onSubmitClick();
+                return;
+            case R.id.register_confirm_button:
+                onConfirmClick();
+                return;
+            case R.id.register_resend_button:
+                onResendClick();
+                return;
+            default:
+                break;
+        }
     }
 
     private void onConfirmClick() {
@@ -172,10 +189,9 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
             return;
         }
 
-        String access_code_service_base_url = getString(R.string.access_code_service_base_url);
-
         disableControls();
-        new AccessCodeObtainingTask(getString(R.string.access_code_service_base_url), new AccessCodeObtainingTask.Callback() {
+        String access_code_service_base_url = getString(R.string.access_code_service_base_url);
+        new AccessCodeObtainingTask(access_code_service_base_url, new AccessCodeObtainingTask.Callback() {
 
             @Override
             public void onSuccess() {
@@ -281,23 +297,6 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.register_submit_button:
-                onSubmitClick();
-                return;
-            case R.id.register_confirm_button:
-                onConfirmClick();
-                return;
-            case R.id.register_resend_button:
-                onResendClick();
-                return;
-            default:
-                break;
-        }
-    }
-
     private void disableControls() {
         mSubmitButton.setEnabled(false);
         mConfirmButton.setEnabled(false);
@@ -313,14 +312,14 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initViews() {
-        mEmailInput = (EditText) findViewById(R.id.register_email_input);
+        mEmailInput = findViewById(R.id.register_email_input);
         mConfirmControls = findViewById(R.id.register_confirm_controls);
 
-        mSubmitButton = (Button) findViewById(R.id.register_submit_button);
+        mSubmitButton = findViewById(R.id.register_submit_button);
         mSubmitButton.setOnClickListener(this);
-        mConfirmButton = (Button) findViewById(R.id.register_confirm_button);
+        mConfirmButton = findViewById(R.id.register_confirm_button);
         mConfirmButton.setOnClickListener(this);
-        mResendButton = (Button) findViewById(R.id.register_resend_button);
+        mResendButton = findViewById(R.id.register_resend_button);
         mResendButton.setOnClickListener(this);
 
         mEmailInput.addTextChangedListener(new TextWatcher() {

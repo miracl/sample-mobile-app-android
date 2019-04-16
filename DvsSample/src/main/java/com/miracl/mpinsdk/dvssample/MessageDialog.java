@@ -36,7 +36,8 @@ public class MessageDialog extends AlertDialog {
 
     private void setMessage(Status status) {
         if (status != null) {
-            mMessage = "Error status code: " + status.getStatusCode() + "\nError message: " + status.getErrorMessage();
+            mMessage = "Error status code: " + status.getStatusCode() + "\nError message: " +
+                    status.getErrorMessage();
         }
     }
 

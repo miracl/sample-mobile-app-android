@@ -25,8 +25,7 @@ public interface AccessCodeServiceApi {
     /**
      * POST request to validate user access code
      *
-     * @param body
-     *   AccessCodeInfo
+     * @param body AccessCodeInfo
      */
     @Headers("Content-type: application/json")
     @POST("/authtoken")
