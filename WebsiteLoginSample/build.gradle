@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26    
 
     defaultConfig {
-        applicationId "com.miracl.mpinsdksample"
+        applicationId "com.miracl.mpinsdk.websiteloginsample"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1

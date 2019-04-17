@@ -2,7 +2,7 @@
     <!-- The CID for the mfa platform -->
     <string name="mpin_cid" formatted="false" translatable="false"></string>
 
-    <string name="app_name">MPin SDK Sample</string>
+    <string name="app_name">Website Login Sample</string>
     <string name="message_no_camera_permission">No camera permission</string>
 
     <string name="hint_enter_email">Enter email</string>

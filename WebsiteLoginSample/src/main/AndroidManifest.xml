@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.miracl.mpinsdksample">
+    package="com.miracl.mpinsdk.websiteloginsample">
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,13 +13,13 @@
         android:required="false" />
 
     <application
-        android:name=".SampleApplication"
+        android:name="com.miracl.mpinsdk.websiteloginsample.SampleApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".QrReaderActivity"
+            android:name="com.miracl.mpinsdk.websiteloginsample.QrReaderActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,12 +28,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegisterUserActivity"
+            android:name="com.miracl.mpinsdk.websiteloginsample.RegisterUserActivity"
             android:label="@string/label_register"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible" />
         <activity
-            android:name=".RegistrationSuccessfulActivity"
+            android:name="com.miracl.mpinsdk.websiteloginsample.RegistrationSuccessfulActivity"
             android:label="@string/label_registration_successful"
             android:screenOrientation="portrait" />
     </application>
