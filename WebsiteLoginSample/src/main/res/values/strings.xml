@@ -1,0 +1,18 @@
+<resources>
+    <!-- The CID for the mfa platform -->
+    <string name="mpin_cid" formatted="false" translatable="false"></string>
+
+    <string name="app_name">MPin SDK Sample</string>
+    <string name="message_no_camera_permission">No camera permission</string>
+
+    <string name="hint_enter_email">Enter email</string>
+    <string name="button_submit">Submit</string>
+    <string name="button_resend_email">Resend e-mail</string>
+    <string name="button_confirmed">Confirmed</string>
+    <string name="label_register">Register</string>
+    <string name="hint_setup_pin">Enter Pin</string>
+    <string name="button_ok">OK</string>
+    <string name="identity_created">Identity Created</string>
+    <string name="button_login">Login</string>
+    <string name="label_registration_successful">Registration Successful</string>
+</resources>
