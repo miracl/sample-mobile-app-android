@@ -1,1 +1,1 @@
-include ':mpinsdk', ':InAppLoginSample'
+include ':mpinsdk', ':WebsiteLoginSample', ':InAppLoginSample'
