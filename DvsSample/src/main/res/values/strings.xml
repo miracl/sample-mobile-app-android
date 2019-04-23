@@ -19,6 +19,16 @@ Please, press the button to proceed.</string>
     <string name="label_sign_message">Enter message to be signed</string>
     <string name="hint_sign_message">message</string>
     <string name="button_sign_message">Sign</string>
+    <string name="label_signature">Signature</string>
+    <string name="label_hash">hash:</string>
+    <string name="label_u">u:</string>
+    <string name="label_v">v:</string>
+    <string name="label_mpin_id">mpinId:</string>
+    <string name="label_public_key">publicKey:</string>
+    <string name="label_dtas">dtas:</string>
+    <string name="label_verification">Verification result</string>
+    <string name="label_verified">verified:</string>
+    <string name="label_status">status:</string>
 
     <!-- M-Pin configuration -->
     <string name="mpin_backend" formatted="false" translatable="false">https://api.mpin.io</string>

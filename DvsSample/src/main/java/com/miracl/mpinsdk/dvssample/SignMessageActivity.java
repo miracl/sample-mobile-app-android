@@ -28,6 +28,16 @@ public class SignMessageActivity extends AppCompatActivity implements EnterPinDi
 
     private EnterPinDialog mEnterPinDialog;
     private MessageDialog mMessageDialog;
+    private View mSignatureInfoView;
+    private View mVerificationResultView;
+    private TextView mHashTextView;
+    private TextView mUTextView;
+    private TextView mVTextView;
+    private TextView mMpinIdTextView;
+    private TextView mPublicKeyTextView;
+    private TextView mDtasTextView;
+    private TextView mVerifiedTextView;
+    private TextView mStatusTextView;
 
     private DocumentDvsInfo mDocumentDvsInfo;
 
@@ -112,6 +122,12 @@ public class SignMessageActivity extends AppCompatActivity implements EnterPinDi
 
                     @Override
                     protected void onSuccess(final Signature result) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                displaySignature(result);
+                            }
+                        });
                         verifySignature(documentDvsInfo, result);
                     }
 
@@ -139,7 +155,11 @@ public class SignMessageActivity extends AppCompatActivity implements EnterPinDi
                             String message = String.format("Message verified: %b. Status: %s",
                                     verifySignatureInfo.getVerified(),
                                     verifySignatureInfo.getStatus());
+
                             mMessageDialog.show(message);
+                            mVerificationResultView.setVisibility(View.VISIBLE);
+                            mVerifiedTextView.setText(String.valueOf(verifySignatureInfo.getVerified()));
+                            mStatusTextView.setText(verifySignatureInfo.getStatus());
                         }
 
                         @Override
@@ -183,6 +203,27 @@ public class SignMessageActivity extends AppCompatActivity implements EnterPinDi
                 onSignClick();
             }
         });
+
+        mSignatureInfoView = findViewById(R.id.signature_info);
+        mVerificationResultView = findViewById(R.id.verification_result);
+        mHashTextView = findViewById(R.id.hash);
+        mUTextView = findViewById(R.id.u);
+        mVTextView = findViewById(R.id.v);
+        mMpinIdTextView = findViewById(R.id.mpin_id);
+        mPublicKeyTextView = findViewById(R.id.public_key);
+        mDtasTextView = findViewById(R.id.dtas);
+        mVerifiedTextView = findViewById(R.id.verified);
+        mStatusTextView = findViewById(R.id.status);
+    }
+
+    private void displaySignature(Signature signature) {
+        mSignatureInfoView.setVisibility(View.VISIBLE);
+        mHashTextView.setText(Hex.encode(signature.hash));
+        mUTextView.setText(Hex.encode(signature.u));
+        mVTextView.setText(Hex.encode(signature.v));
+        mMpinIdTextView.setText(new String(signature.mpinId));
+        mPublicKeyTextView.setText(Hex.encode(signature.publicKey));
+        mDtasTextView.setText(new String(signature.dtas));
     }
 
     private String serializeDocumentDvsInfo(DocumentDvsInfo documentDvsInfo) throws JSONException {
