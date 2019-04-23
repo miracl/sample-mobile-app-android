@@ -2,7 +2,6 @@ package com.miracl.mpinsdk.dvssample;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
@@ -81,12 +80,17 @@ public class SignMessageActivity extends AppCompatActivity implements EnterPinDi
                 documentDvsInfo.getHash().getBytes(),
                 new MPinMfaAsync.Callback<Boolean>() {
                     @Override
-                    protected void onSuccess(@Nullable Boolean result) {
+                    protected void onSuccess(final Boolean result) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                mEnterPinDialog.setTitle(getString(R.string.title_enter_pin_for_signing));
-                                mEnterPinDialog.show();
+                                if (result) {
+                                    mEnterPinDialog.setTitle(getString(R.string.title_enter_pin_for_signing));
+                                    mEnterPinDialog.show();
+                                } else {
+                                    String errorMessage = "Failed to verify document hash received from the backend.";
+                                    mMessageDialog.show(errorMessage);
+                                }
                             }
                         });
                     }
@@ -107,7 +111,7 @@ public class SignMessageActivity extends AppCompatActivity implements EnterPinDi
                 new MPinMfaAsync.Callback<Signature>() {
 
                     @Override
-                    protected void onSuccess(@Nullable Signature result) {
+                    protected void onSuccess(final Signature result) {
                         verifySignature(documentDvsInfo, result);
                     }
 
@@ -118,11 +122,11 @@ public class SignMessageActivity extends AppCompatActivity implements EnterPinDi
                 });
     }
 
-    private void verifySignature(DocumentDvsInfo documentDvsInfo, Signature signature) {
+    private void verifySignature(DocumentDvsInfo documentDvsInfo, final Signature signature) {
         try {
             // Serialize the signature and document data
-            String verificationData = serializeSignature(signature);
-            String documentData = serializeDocumentDvsInfo(documentDvsInfo);
+            final String verificationData = serializeSignature(signature);
+            final String documentData = serializeDocumentDvsInfo(documentDvsInfo);
 
             // Send post request to the service in order to verify document signature
             new VerifySignatureTask(getString(R.string.access_code_service_base_url),

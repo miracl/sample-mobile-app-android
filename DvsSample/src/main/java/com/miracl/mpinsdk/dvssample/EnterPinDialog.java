@@ -9,13 +9,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class EnterPinDialog extends Dialog {
+class EnterPinDialog extends Dialog {
 
     private static final int PIN_LENGTH = 4;
 
+    private final EventListener mEventListener;
     private EditText mEnterPinInput;
     private TextView mTitle;
-    private EventListener mEventListener;
 
     public EnterPinDialog(Context context, EventListener listener) {
         super(context);

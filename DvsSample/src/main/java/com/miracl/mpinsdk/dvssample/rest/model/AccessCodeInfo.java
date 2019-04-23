@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName;
 public class AccessCodeInfo {
 
     @SerializedName("code")
-    private String accessCode;
+    private final String accessCode;
 
     @SerializedName("userID")
-    private String userId;
+    private final String userId;
 
     public AccessCodeInfo(String accessCode, String userId) {
         this.accessCode = accessCode;

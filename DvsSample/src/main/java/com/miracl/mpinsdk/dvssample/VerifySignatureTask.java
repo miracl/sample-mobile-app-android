@@ -12,14 +12,14 @@ import java.io.IOException;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class VerifySignatureTask extends AsyncTask<Void, Void, Status> {
+class VerifySignatureTask extends AsyncTask<Void, Void, Status> {
 
     private static final int HTTP_CODE_OK = 200;
 
-    private String mVerificationData;
-    private String mDocumentData;
-    private String mBaseServiceUrl;
-    private VerifySignatureTask.Callback mCallback;
+    private final String mVerificationData;
+    private final String mDocumentData;
+    private final String mBaseServiceUrl;
+    private final VerifySignatureTask.Callback mCallback;
     private VerifySignatureInfo mResponse;
 
     public VerifySignatureTask(String baseServiceUrl, String verificationData, String documentData, VerifySignatureTask.Callback callback) {

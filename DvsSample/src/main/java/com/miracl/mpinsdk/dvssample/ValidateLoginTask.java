@@ -16,14 +16,14 @@ import retrofit2.Retrofit;
  * Just an example of how a validation with auth code can be done with a demo service. Actual implementations can be different and
  * more robust.
  */
-public class ValidateLoginTask extends AsyncTask<Void, Void, Boolean> {
+class ValidateLoginTask extends AsyncTask<Void, Void, Boolean> {
 
     private static final int HTTP_CODE_OK = 200;
 
-    private String mBaseServiceUrl;
-    private String mAuthCode;
-    private String mUserId;
-    private ValidationListener mListener;
+    private final String mBaseServiceUrl;
+    private final String mAuthCode;
+    private final String mUserId;
+    private final ValidationListener mListener;
 
     public ValidateLoginTask(String baseServiceUrl, String authCode, String userId, ValidationListener listener) {
         mBaseServiceUrl = baseServiceUrl;

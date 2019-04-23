@@ -212,7 +212,7 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
         SampleApplication.getMfaSdk().makeNewUser(email, "Android Sample App", new MPinMfaAsync.Callback<User>() {
 
             @Override
-            protected void onSuccess(@Nullable User result) {
+            protected void onSuccess(User result) {
                 mCurrentUser = result;
                 // After we have a user, we can start the registration process for it. If successful this will trigger sending a
                 // confirmation email from the current backend

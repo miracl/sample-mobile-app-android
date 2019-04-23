@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 
 import com.miracl.mpinsdk.model.Status;
 
-public class MessageDialog extends AlertDialog {
+class MessageDialog extends AlertDialog {
 
     private String mMessage;
 

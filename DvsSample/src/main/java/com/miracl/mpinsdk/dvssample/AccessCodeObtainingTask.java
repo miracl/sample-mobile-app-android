@@ -16,12 +16,13 @@ import retrofit2.Retrofit;
 /**
  * An example of how an authUrl can be obtained in order to pass it to the SDK and receive and accessCode
  */
-public class AccessCodeObtainingTask extends AsyncTask<Void, Void, Status> {
+class AccessCodeObtainingTask extends AsyncTask<Void, Void, Status> {
 
     private static final int HTTP_CODE_OK = 200;
 
-    private String mBaseServiceUrl;
-    private Callback mCallback;
+    private final String mBaseServiceUrl;
+    private final Callback mCallback;
+
     private String mAccessCode;
 
     public AccessCodeObtainingTask(String baseServiceUrl, Callback callback) {
@@ -39,7 +40,7 @@ public class AccessCodeObtainingTask extends AsyncTask<Void, Void, Status> {
         try {
             // Get the auth url from a demo service
             Response<AuthorizeUrlInfo> responseAuthUrl = accessCodeServiceApi.getAuthURL().execute();
-            if (responseAuthUrl.code() == HTTP_CODE_OK) {
+            if (responseAuthUrl.code() == HTTP_CODE_OK && responseAuthUrl.body() != null) {
                 AuthorizeUrlInfo urlInfo = responseAuthUrl.body();
 
                 StringBuilder accessCodeContainer = new StringBuilder();

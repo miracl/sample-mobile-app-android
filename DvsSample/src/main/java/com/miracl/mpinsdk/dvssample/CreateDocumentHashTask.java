@@ -15,12 +15,13 @@ import retrofit2.Retrofit;
 /**
  * An example of how a document hash can be created with a demo service.
  */
-public class CreateDocumentHashTask extends AsyncTask<Void, Void, Status> {
+class CreateDocumentHashTask extends AsyncTask<Void, Void, Status> {
     private static final int HTTP_CODE_OK = 200;
 
-    private String mDocument;
-    private String mBaseServiceUrl;
-    private CreateDocumentHashTask.Callback mCallback;
+    private final String mDocument;
+    private final String mBaseServiceUrl;
+    private final CreateDocumentHashTask.Callback mCallback;
+
     private DocumentDvsInfo mResponse;
 
     public CreateDocumentHashTask(String baseServiceUrl, String document, CreateDocumentHashTask.Callback callback) {
