@@ -106,8 +106,13 @@ public class SignMessageActivity extends AppCompatActivity implements EnterPinDi
                     }
 
                     @Override
-                    protected void onFail(@NonNull Status status) {
-                        mMessageDialog.show(status);
+                    protected void onFail(final @NonNull Status status) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mMessageDialog.show(status);
+                            }
+                        });
                     }
                 });
     }
@@ -132,8 +137,13 @@ public class SignMessageActivity extends AppCompatActivity implements EnterPinDi
                     }
 
                     @Override
-                    protected void onFail(@NonNull Status status) {
-                        mMessageDialog.show(status);
+                    protected void onFail(final @NonNull Status status) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mMessageDialog.show(status);
+                            }
+                        });
                     }
                 });
     }
