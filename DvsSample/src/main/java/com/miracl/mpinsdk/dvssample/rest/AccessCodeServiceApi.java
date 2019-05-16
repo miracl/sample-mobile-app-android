@@ -1,6 +1,6 @@
 package com.miracl.mpinsdk.dvssample.rest;
 
-import com.miracl.mpinsdk.dvssample.rest.model.AccessCodeInfo;
+import com.miracl.mpinsdk.dvssample.rest.model.AuthCodeInfo;
 import com.miracl.mpinsdk.dvssample.rest.model.AuthorizeUrlInfo;
 
 import okhttp3.ResponseBody;
@@ -23,11 +23,11 @@ public interface AccessCodeServiceApi {
     Call<AuthorizeUrlInfo> getAuthURL();
 
     /**
-     * POST request to validate user access code
+     * POST request to validate user auth code
      *
-     * @param body AccessCodeInfo
+     * @param body AuthCodeInfo
      */
     @Headers("Content-type: application/json")
     @POST("/authtoken")
-    Call<ResponseBody> setAuthToken(@Body AccessCodeInfo body);
+    Call<ResponseBody> setAuthToken(@Body AuthCodeInfo body);
 }

@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 
 import com.miracl.mpinsdk.dvssample.rest.AccessCodeServiceApi;
 import com.miracl.mpinsdk.dvssample.rest.Client;
-import com.miracl.mpinsdk.dvssample.rest.model.AccessCodeInfo;
+import com.miracl.mpinsdk.dvssample.rest.model.AuthCodeInfo;
 
 import java.io.IOException;
 
@@ -39,7 +39,7 @@ class ValidateLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         try {
             Response<ResponseBody> responseSetAuthToken = accessCodeServiceApi
-                    .setAuthToken(new AccessCodeInfo(mAuthCode, mUserId)).execute();
+                    .setAuthToken(new AuthCodeInfo(mAuthCode, mUserId)).execute();
 
             return responseSetAuthToken.code() == HTTP_CODE_OK;
         } catch (IOException e) {

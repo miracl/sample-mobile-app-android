@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import android.os.AsyncTask;
 
 import com.miracl.mpinsdk.inapploginsample.rest.AccessCodeServiceApi;
-import com.miracl.mpinsdk.inapploginsample.rest.model.AccessCodeInfo;
+import com.miracl.mpinsdk.inapploginsample.rest.model.AuthCodeInfo;
 
 import java.io.IOException;
 
@@ -28,9 +28,9 @@ public class ValidateLoginTask extends AsyncTask<Void, Void, Boolean> {
 
     private static final int HTTP_CODE_OK = 200;
 
-    private String             mAuthServiceUrl;
-    private String             mAuthCode;
-    private String             mUserId;
+    private String mAuthServiceUrl;
+    private String mAuthCode;
+    private String mUserId;
     private ValidationListener mListener;
 
     public ValidateLoginTask(String authServiceUrl, String authCode, String userId, ValidationListener listener) {
@@ -45,7 +45,7 @@ public class ValidateLoginTask extends AsyncTask<Void, Void, Boolean> {
         Retrofit retrofit;
         try {
             retrofit = new Retrofit.Builder().client(new OkHttpClient())
-              .addConverterFactory(GsonConverterFactory.create(new Gson())).baseUrl(mAuthServiceUrl).build();
+                    .addConverterFactory(GsonConverterFactory.create(new Gson())).baseUrl(mAuthServiceUrl).build();
         } catch (IllegalArgumentException exception) {
             return false;
         }
@@ -54,7 +54,7 @@ public class ValidateLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         try {
             Response<ResponseBody> responseSetAuthToken = accessCodeServiceApi
-              .setAuthToken(new AccessCodeInfo(mAuthCode, mUserId)).execute();
+                    .setAuthToken(new AuthCodeInfo(mAuthCode, mUserId)).execute();
 
             return responseSetAuthToken.code() == HTTP_CODE_OK;
         } catch (IOException e) {
