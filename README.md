@@ -8,7 +8,7 @@
 ## Contents
 This repository contains simple demonstration mobile apps which make use of our mobile Android SDK.
 
-* **In App login** - located in folder [InAppLoginSample](InAppLoginSample/README.md).
+* **Mobile App login** - located in folder [MobileAppLoginSample](MobileAppLoginSample/README.md).
 This flow is used to login into the mobile app itself.
 
 * **Webside login** - located in folder [WebsiteLoginSample](WebsiteLoginSample/README.md).
