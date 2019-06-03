@@ -114,7 +114,15 @@ SampleApplication.getMfaSdk().confirmRegistration(mCurrentUser, new MPinMfaAsync
 }
 ```
 
-Finally, if so, the `mEnterPinDialog` is shown to the user to create their PIN:
+The user also has an option to tap on the `RESEND E-MAIL` button in case they didn't receive an email. This will result in a call to the `onResendClick()` method. Getting a new email requires re-initialization of the registration process for the current user with [getMfaSdk().restartRegistration](https://github.com/miracl/mfa-client-sdk-android#status-restartregistrationuser-user) method:
+
+```
+SampleApplication.getMfaSdk().restartRegistration(mCurrentUser, new MPinMfaAsync.Callback<Void>() {
+  ...
+});
+```
+
+Finally, when the user verify their identity registration, the `mEnterPinDialog` is shown to the user to create their PIN:
 
 <img src="images/pin_dialog.png">
 
