@@ -1,7 +1,7 @@
 # Mobile App Login Sample
 
 * **category**: Samples
-* **copyright**: 2019 MIRACL UK LTD
+* **copyright**: 2019 MIRACL Technologies LTD
 * **link**: https://github.com/miracl/sample-mobile-app-android/tree/master/MobileAppLoginSample
 
 ## Description
