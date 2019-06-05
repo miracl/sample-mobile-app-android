@@ -185,7 +185,7 @@ A relevant information for the registered user is obtained by its `getState`, `g
 
 In `onLoginClick()` handler you can see that a new [AccessCodeObtainingTask](#accesscodeobtainingtaskjava) is started in order to obtain the access code required to start the oidc authentication against the MFA. If it is successful, the `startLogin()` method is called and the pin pad view is displayed to the user so they could enter their identity PIN.
 
-Once the user has entered their pin, the `onPinEntered(final String pin)` handler starts the authentication process with [getMfaSdk().startAuthentication](https://github.com/miracl/mfa-client-sdk-android#status-startauthenticationuser-user-string-accesscode). It sends the user and the access code to the MFA server in order to obtain a time permit which confirms that the user is authorized to attempt authentication:
+Once the user has entered their pin, the `onPinEntered(final String pin)` handler starts the authentication process with [getMfaSdk().startAuthentication](https://github.com/miracl/mfa-client-sdk-android#status-startauthenticationuser-user-string-accesscode). It sends the `user id` and the `access code` to the MFA server in order to start the authentication process:
 
 ```
 SampleApplication.getMfaSdk().startAuthentication(mCurrentUser, accessCode, new MPinMfaAsync.Callback<Void>() {

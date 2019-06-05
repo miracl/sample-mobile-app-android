@@ -11,7 +11,7 @@ This repository contains simple demonstration mobile apps which make use of our 
 * **Mobile App login** - located in folder [MobileAppLoginSample](MobileAppLoginSample/README.md).
 This flow is used to login into the mobile app itself.
 
-* **Webside login** - located in folder [WebsiteLoginSample](WebsiteLoginSample/README.md).
+* **Website login** - located in folder [WebsiteLoginSample](WebsiteLoginSample/README.md).
 This flow is used to log into another app using the mobile app(the oidc flow).
 
 * **DVS** - located in folder [DvsSample](DvsSample/README.md).
