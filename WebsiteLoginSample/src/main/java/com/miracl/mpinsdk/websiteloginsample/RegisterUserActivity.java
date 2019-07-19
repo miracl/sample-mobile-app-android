@@ -170,8 +170,8 @@ public class RegisterUserActivity extends AppCompatActivity implements View.OnCl
 
                       @Override
                       protected void onSuccess(@Nullable Void result) {
-                          // When the registration process is started successfully for a user, it is stored in the SDK and is
-                          // associated with the current backend at the time.
+                          // When the registration process is started successfully for a user, the identity is
+                          // stored in the SDK, associating it with the current set backend.
                           runOnUiThread(new Runnable() {
 
                               @Override

@@ -44,7 +44,7 @@ class AccessCodeObtainingTask extends AsyncTask<Void, Void, Status> {
                 AuthorizeUrlInfo urlInfo = responseAuthUrl.body();
 
                 StringBuilder accessCodeContainer = new StringBuilder();
-                // Use the auth url in order to receive and access code
+                // Use the auth url in order to receive an access code
                 com.miracl.mpinsdk.model.Status status = mfaSdk.getAccessCode(urlInfo.getAuthorizeUrl(), accessCodeContainer);
                 if (status.getStatusCode() == com.miracl.mpinsdk.model.Status.Code.OK) {
                     mAccessCode = accessCodeContainer.toString();

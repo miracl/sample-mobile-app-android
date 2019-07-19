@@ -152,7 +152,7 @@ public class LoginActivity extends AppCompatActivity implements EnterPinDialog.E
                             @Override
                             public void run() {
                                 Toast.makeText(LoginActivity.this,
-                                  "The MPin SDK did not initialize properly. Check you backend and CID configuration",
+                                  "The MPin SDK did not initialize properly. Check your backend and CID configuration",
                                   Toast.LENGTH_LONG).show();
                             }
                         });

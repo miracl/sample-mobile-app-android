@@ -233,3 +233,4 @@ If the call returns status OK, the validation is successful and the user `getId(
 
 * [DvsSample](https://github.com/miracl/sample-mobile-app-android/tree/master/DvsSample)
 * [WebsiteLoginSample](https://github.com/miracl/sample-mobile-app-android/tree/master/WebsiteLoginSample)
+* [BootstrapSample](https://github.com/miracl/sample-mobile-app-android/tree/master/BootstrapSample)

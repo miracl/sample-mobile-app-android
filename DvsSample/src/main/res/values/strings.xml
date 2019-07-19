@@ -7,7 +7,8 @@
     <string name="hint_setup_pin">Enter Pin</string>
     <string name="label_id">Id:</string>
     <string name="label_state">State:</string>
-    <string name="label_mpin_backend">M-Pin backend:</string>
+    <string name="label_customer_id">CustomerId:</string>
+    <string name="label_backend">M-Pin backend:</string>
     <string name="button_login">Login</string>
     <string name="button_delete">Delete</string>
     <string name="label_authenticated_identity">You have been authenticated with identity:</string>

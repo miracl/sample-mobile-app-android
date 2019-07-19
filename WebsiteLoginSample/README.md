@@ -219,3 +219,4 @@ Within `onLoginClick()` handler the `mEnterPinDialog` is shown to the user to en
 
 * [DvsSample](https://github.com/miracl/sample-mobile-app-android/tree/master/DvsSample)
 * [MobileAppLoginSample](https://github.com/miracl/sample-mobile-app-android/tree/master/MobileAppLoginSample)
+* [BootstrapSample](https://github.com/miracl/sample-mobile-app-android/tree/master/BootstrapSample)

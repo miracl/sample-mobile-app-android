@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_code_generation"
+        android:title="@string/title_code_generation" />
+
+    <item
+        android:id="@+id/navigation_code_registration"
+        android:title="@string/title_code_registration" />
+
+    <item
+        android:id="@+id/navigation_users"
+        android:title="@string/title_users" />
+
+</menu>
