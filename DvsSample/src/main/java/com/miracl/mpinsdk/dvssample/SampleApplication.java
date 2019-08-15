@@ -1,7 +1,7 @@
 package com.miracl.mpinsdk.dvssample;
 
 import android.app.Application;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.miracl.mpinsdk.MPinMfaAsync;
 import com.miracl.mpinsdk.model.User;

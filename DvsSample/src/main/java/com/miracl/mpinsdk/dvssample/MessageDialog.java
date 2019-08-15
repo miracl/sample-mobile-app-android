@@ -2,7 +2,7 @@ package com.miracl.mpinsdk.dvssample;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.miracl.mpinsdk.model.Status;
 

@@ -1,7 +1,7 @@
 package com.miracl.mpinsdk.websiteloginsample.util;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.widget.Toast;
 
 import com.miracl.mpinsdk.model.Status;
