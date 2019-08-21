@@ -14,8 +14,13 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
     private volatile boolean mIsPreviewing;
     private volatile boolean mIsCameraReleased;
 
-    private SurfaceHolder   mHolder;
+    private SurfaceHolder mHolder;
     private PreviewCallback mPreviewCallback;
+
+
+    public CameraPreview(Context context) {
+        super(context);
+    }
 
     public CameraPreview(Context context, PreviewCallback previewCallback) {
         super(context);

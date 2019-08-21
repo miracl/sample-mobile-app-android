@@ -1,186 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CodeGenerationFragment">
 
     <RelativeLayout
+        android:id="@+id/user_info"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        android:visibility="gone">
 
-        <RelativeLayout
-            android:id="@+id/user_info"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/label_selected_user"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/user_id_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="30dp"
-            android:visibility="gone">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:text="@string/label_selected_user"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/user_id_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:text="@string/label_id"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/user_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_toEndOf="@id/user_id_label"
-                android:layout_toRightOf="@id/user_id_label"
-                tools:text="asdasd@example.com" />
-
-            <TextView
-                android:id="@+id/user_state_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/user_id_label"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:text="@string/label_state"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/user_state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/user_id"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@id/user_state_label"
-                android:layout_toRightOf="@id/user_state_label"
-                tools:text="ACTIVATED" />
-
-            <TextView
-                android:id="@+id/user_backend_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/user_state_label"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:text="@string/label_backend"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/user_backend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/user_state"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@id/user_backend_label"
-                android:layout_toRightOf="@id/user_backend_label"
-                tools:text="api.mpin.io" />
-
-            <TextView
-                android:id="@+id/user_cid_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/user_backend_label"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:text="@string/label_customer_id"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/user_cid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/user_backend"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@id/user_cid_label"
-                android:layout_toRightOf="@id/user_cid_label"
-                tools:text="6e6a1d7a-4ecd-482a-632a-f0b4e266a5cc" />
-
-            <Button
-                android:id="@+id/button_generate_code"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/user_cid_label"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:text="@string/button_generate_code"
-                android:textColor="@color/colorPrimary" />
-        </RelativeLayout>
-
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/label_id"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/bootstrap_code_label"
+            android:id="@+id/user_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/user_info"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
-            android:text="@string/label_bootstrap_code"
-            android:textSize="30sp"
-            android:visibility="gone" />
+            android:layout_marginTop="30dp"
+            android:layout_toEndOf="@id/user_id_label"
+            android:layout_toRightOf="@id/user_id_label"
+            tools:text="asdasd@example.com" />
 
         <TextView
-            android:id="@+id/tv_bootstrap_code"
+            android:id="@+id/user_state_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/user_info"
+            android:layout_below="@id/user_id_label"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
-            android:layout_toEndOf="@+id/bootstrap_code_label"
-            android:layout_toRightOf="@+id/bootstrap_code_label"
-            android:textColor="@color/colorPrimary"
-            android:textSize="30sp" />
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/label_state"
+            android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/action_buttons"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/user_state"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center_horizontal">
+            android:layout_below="@id/user_id"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/user_state_label"
+            android:layout_toRightOf="@id/user_state_label"
+            tools:text="ACTIVATED" />
 
-            <Button
-                android:id="@+id/select_user_button"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/button_select_user"
-                android:textColor="@color/colorPrimary" />
+        <TextView
+            android:id="@+id/user_backend_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_state_label"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/label_backend"
+            android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/register_user_button"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/button_register_user"
-                android:textColor="@color/colorPrimary" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/user_backend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_state"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/user_backend_label"
+            android:layout_toRightOf="@id/user_backend_label"
+            tools:text="api.mpin.io" />
+
+        <TextView
+            android:id="@+id/user_cid_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_backend_label"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/label_customer_id"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/user_cid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_backend"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/user_cid_label"
+            android:layout_toRightOf="@id/user_cid_label"
+            tools:text="6e6a1d7a-4ecd-482a-632a-f0b4e266a5cc" />
+
+        <Button
+            android:id="@+id/button_generate_code"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_cid_label"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/button_generate_code"
+            android:textColor="@color/colorPrimary" />
     </RelativeLayout>
 
-</FrameLayout>
+
+    <TextView
+        android:id="@+id/bootstrap_code_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_info"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:text="@string/label_bootstrap_code"
+        android:textSize="30sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_bootstrap_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_info"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_toEndOf="@+id/bootstrap_code_label"
+        android:layout_toRightOf="@+id/bootstrap_code_label"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:id="@+id/action_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/select_user_button"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/button_select_user"
+            android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/register_user_button"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/button_register_user"
+            android:textColor="@color/colorPrimary" />
+    </LinearLayout>
+
+</RelativeLayout>

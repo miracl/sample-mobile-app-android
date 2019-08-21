@@ -4,12 +4,13 @@
     <string name="button_submit">Submit</string>
     <string name="button_resend_email">Resend e-mail</string>
     <string name="button_confirmed">Confirmed</string>
-    <string name="label_register">Register</string>
     <string name="hint_setup_pin">Enter Pin</string>
-    <string name="button_ok">OK</string>
-    <string name="identity_created">Identity Created</string>
+    <string name="label_id">Id:</string>
+    <string name="label_state">State:</string>
+    <string name="label_customer_id">CustomerId:</string>
+    <string name="label_backend">M-Pin backend:</string>
     <string name="button_login">Login</string>
-    <string name="label_registration_successful">Registration Successful</string>
+    <string name="button_delete">Delete</string>
 
     <!-- M-Pin configuration -->
     <string name="mpin_backend" formatted="false" translatable="false">https://api.mpin.io</string>

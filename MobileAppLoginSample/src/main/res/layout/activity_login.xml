@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
     android:padding="20dp">
 
     <androidx.cardview.widget.CardView
@@ -25,7 +24,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
-                android:text="Id:"
+                android:text="@string/label_id"
                 android:textStyle="bold" />
 
             <TextView
@@ -47,7 +46,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="5dp"
-                android:text="State:"
+                android:text="@string/label_state"
                 android:textStyle="bold" />
 
             <TextView
@@ -70,7 +69,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="5dp"
-                android:text="M-Pin backend:"
+                android:text="@string/label_backend"
                 android:textStyle="bold" />
 
             <TextView
@@ -93,7 +92,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="5dp"
-                android:text="Customer Id:"
+                android:text="@string/label_customer_id"
                 android:textStyle="bold" />
 
             <TextView
@@ -115,7 +114,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_margin="5dp"
-                android:text="Login"
+                android:text="@string/button_login"
                 android:textColor="@color/colorPrimary" />
 
             <Button
@@ -127,7 +126,7 @@
                 android:layout_margin="5dp"
                 android:layout_toLeftOf="@id/login_button"
                 android:layout_toStartOf="@id/login_button"
-                android:text="Delete"
+                android:text="@string/button_delete"
                 android:textColor="@android:color/holo_red_light" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
