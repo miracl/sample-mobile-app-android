@@ -73,10 +73,10 @@ Click on the Login button of your web browser app so a QR code appears and scan 
 
 <img src="images/qr_reader.png">
 
-Once the information from the QR code has been read within `onQrUrlReceived(String url)`, the access code and the base url are obtained from the qr-read url.
+Once the information from the QR code has been read within `onQrResult(String result)`, the access code and the base url are obtained from the qr-read url.
 
 ```
-Uri qrUri = Uri.parse(url);
+Uri qrUri = Uri.parse(result);
 ```
 
 ```

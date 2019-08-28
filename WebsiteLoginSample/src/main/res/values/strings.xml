@@ -4,6 +4,8 @@
 
     <string name="app_name">Website Login Sample</string>
     <string name="message_no_camera_permission">No camera permission</string>
+    <string name="message_camera_error">This device doesn\'t support Camera2 API.</string>
+    <string name="message_capture_session_error">Failed to create CameraCaptureSession for camera preview</string>
 
     <string name="hint_enter_email">Enter email</string>
     <string name="button_submit">Submit</string>

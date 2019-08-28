@@ -1,4 +1,4 @@
-package com.miracl.mpinsdk.websiteloginsample.util;
+package com.miracl.mpinsdk.websiteloginsample;
 
 import android.app.Activity;
 import androidx.annotation.NonNull;

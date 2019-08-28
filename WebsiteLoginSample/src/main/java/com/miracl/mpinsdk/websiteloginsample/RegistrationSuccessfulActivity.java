@@ -12,7 +12,6 @@ import com.miracl.mpinsdk.MPinMFA;
 import com.miracl.mpinsdk.MPinMfaAsync;
 import com.miracl.mpinsdk.model.Status;
 import com.miracl.mpinsdk.model.User;
-import com.miracl.mpinsdk.websiteloginsample.util.ToastUtils;
 
 import java.util.ArrayList;
 
