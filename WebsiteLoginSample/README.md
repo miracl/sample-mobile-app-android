@@ -33,8 +33,7 @@ This sample demonstrates how to use the [MIRACL Android SDK](https://github.com/
 
 ## Create a demo web app to log into
 
-In order to be able to test the demo Android app you need to run a backend service as a demo web application. You could use one of our web SDKs as explained in the [SDK Instructions](https://devdocs.trust.miracl.cloud/sdk-instructions/) of our documentation.
-The SDK authenticates to the [MIRACL Trust authentication portal](https://trust.miracl.cloud/), called also MFA, using [OpenIDConnect](https://openid.net/connect/) protocol. This means you need to login and create an application in it so you can take credentials (`client id` and `client secret`) for the communication. Note that the redirect url set in this MFA web application needs to match your demo web application, concatenated with `/login` by default.
+In order to be able to test the demo Android app, you need to run a backend service as a relying party demo web app (RPA). The web app should authenticate to the [MIRACL Trust authentication portal](https://trust.miracl.cloud/), called also MFA, using [OpenIDConnect](https://openid.net/connect/) protocol. This means you need to login and create an application in it so you can take credentials (`client id` and `client secret`) for the communication. Sample ones could be found [here](https://github.com/miracl/maas-sdk-dotnet-core2#samples). Note that the redirect URL set in this MFA web application needs to match your demo web application, concatenated with `/login` by default.
 
 <img src="images/redirect-url-private-ip.png" width="400">
 
