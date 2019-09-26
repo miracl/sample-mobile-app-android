@@ -33,11 +33,27 @@ This sample demonstrates how to use the [MIRACL Android SDK](https://github.com/
 
 ## Create a demo web app to act as a backend service
 
-In order to be able to test the demo Android app you need to run a backend service as a relying party demo web app (RPA). You could use one of our web SDKs as explained in the [SDK Instructions](https://devdocs.trust.miracl.cloud/sdk-instructions/) of our documentation.
-The SDK authenticates to the [MIRACL Trust authentication portal](https://trust.miracl.cloud/), called also MFA, using [OpenIDConnect](https://openid.net/connect/) protocol. This means you need to login and create an application in it so you can take credentials (`client id` and `client secret`) for the communication. Note that the redirect url set in this MFA web application needs to match your demo backend application, concatenated with `/login` by default.
+In order to be able to test the demo Android app you need to run a backend service as a relying party demo web app (RPA). The demo app should authenticate to the [MIRACL Trust authentication portal](https://trust.miracl.cloud/), called also MFA, using [OpenIDConnect](https://openid.net/connect/) protocol. More information could be found [here](http://docs.miracl.cloud/oidc-client-setup/). This means you need to login and create an application in the portal and use its credentials (`client id` and `client secret`) in the demo web app for the communication.
 
-Once you have run the demo web app you need to host it on a visible uri for the mobile app. These steps are documented in details in the
-[dotnet SDK](https://devdocs.trust.miracl.cloud/sdk-instructions/dotnet/) which supports this functionality. Just reassure that the proper redirect uri (constructed as `demoAppUri/login`) is added as a redirect uri to the [authentication portal](https://trust.miracl.cloud/) application settings you're running the web app with:
+For the case of that sample, there are two more endpoints the RPA should implement as it is done at [this sample RPA project](https://github.com/miracl/maas-sdk-dotnet-core2#sample-endpoints):
+* POST `/authzurl`
+ This should return the following json formatted data on success as it is done [here](https://github.com/miracl/maas-sdk-dotnet-core2/blob/master/MiraclAuthenticationApp.Core2.0/Controllers/authtokenController.cs#L13):
+```
+{
+    "authorizeURL": "<- The authorization url to the MFA ->"
+}
+```
+* POST `/authtoken`
+ This endpoint should authenticate by a specified Authorization Code and User ID, passed in the following format:
+```
+{
+    "code":"<- the authorization code to validate with ->",
+    "userID":"<- the authorized email to be verified ->"
+}
+```
+The http status code of the response could correspond to the status of the authentication. A sample could be seen [here](https://github.com/miracl/maas-sdk-dotnet-core2/blob/master/MiraclAuthenticationApp.Core2.0/Controllers/authzurlController.cs#L9).
+
+Once you have run the demo app you need to host it on a visible uri for the mobile app. Just be sure that the proper redirect uri (constructed as `demoAppUri/login`) is added as a redirect uri to the [authentication portal](https://trust.miracl.cloud/) application settings you're running this web app with:
 
 <img src="images/redirect-url-private-ip.png" width="400">
 

@@ -41,11 +41,18 @@ Keep in mind, that the bootstrap codes are currently available only for enterpri
 
 ## Create a demo web app to act as a backend service
 
-In order to be able to test the demo Android app, you need to run a backend service as a relying party demo web app (RPA). You could use one of our web SDKs as explained in the [SDK Instructions](https://devdocs.trust.miracl.cloud/sdk-instructions/) of our documentation.
-The SDK authenticates to the [MIRACL Trust authentication portal](https://trust.miracl.cloud/), called also MFA, using [OpenIDConnect](https://openid.net/connect/) protocol. This means you need to login and create an application in it so you can take credentials (`client id` and `client secret`) for the communication. Note that the redirect URL set in this MFA web application needs to match your demo web application, concatenated with `/login` by default.
+In order to be able to test the demo Android app, you need to run a backend service as a relying party demo web app (RPA). The demo app should authenticate to the [MIRACL Trust authentication portal](https://trust.miracl.cloud/), called also MFA, using [OpenIDConnect](https://openid.net/connect/) protocol. More information could be found [here](http://docs.miracl.cloud/oidc-client-setup/). This means you need to login and create an application in the portal and use its credentials (`client id` and `client secret`) in the demo web app for the communication.
 
-Once you have run the demo web app you need to host it on a visible URI for the mobile app. These steps are documented in details in the
-[dotnet SDK](https://devdocs.trust.miracl.cloud/sdk-instructions/dotnet-core/). Just reassure that the proper redirect URI (`demoAppUri/login`) is added as a redirect URI to the [authentication portal](https://trust.miracl.cloud/) application settings you're running the web app with:
+For the case of that sample, there is one more endpoint the RPA should implements as it is done at [this sample RPA project](https://github.com/miracl/maas-sdk-dotnet-core2#sample-endpoints):
+* POST `/authzurl`
+ This should return the following json formatted data on success as it is done [here](https://github.com/miracl/maas-sdk-dotnet-core2/blob/master/MiraclAuthenticationApp.Core2.0/Controllers/authtokenController.cs#L13):
+```
+{
+    "authorizeURL": "<- The authorization url to the MFA ->"
+}
+```
+
+Once you have run the demo web app you need to host it on a visible uri for the mobile app. Just be sure that the proper redirect uri (constructed as `demoAppUri/login`) is added as a redirect uri to the [authentication portal](https://trust.miracl.cloud/) application settings you're running this web app with:
 
 <img src="images/redirect-url-private-ip.png" width="400">
 
@@ -88,7 +95,7 @@ public static MPinMfaAsync getMfaSdk() {
 }
 ```
 
-### Bootstrap Code Generation 
+### Bootstrap Code Generation
 
 All of the work is done at [`CodeGenerationFragment.java`](src/main/java/com/miracl/mpinsdk/bootstrapsample/CodeGenerationFragment.java), which is presented when `Code Generation` tab is clicked.
 
@@ -130,13 +137,13 @@ To register with a bootstrap code, the user needs to go to a device where they a
 
 Go to the login identity screen of your backend and click on the settings icon of an already registered identity. There is an option called `Enroll a New Device`:
 
-<img src="images/enroll_new_device.png" width="400"> 
+<img src="images/enroll_new_device.png" width="400">
 
 Keep in mind that if you don't see `Enroll a New Device` option, you are not an enterprise user. If you need this functionality, contact us at support@miracl.com.
 
-`Enroll a New Device` requires authentication and asks you for your PIN. Then it displays the bootstrap code you need to use in your mobile device to transfer the identity to your phone. 
+`Enroll a New Device` requires authentication and asks you for your PIN. Then it displays the bootstrap code you need to use in your mobile device to transfer the identity to your phone.
 
-<img src="images/enter_bootrstrap_code.png" width="400"> 
+<img src="images/enter_bootrstrap_code.png" width="400">
 
 Back to this demo sample, аll of the work is done at [`CodeRegistrationFragment`](src/main/java/com/miracl/mpinsdk/bootstrapsample/CodeRegistrationFragment.java), which is presented when `Code Registration` tab is clicked.
 
@@ -171,17 +178,17 @@ SampleApplication.getMfaSdk().startRegistration(SampleApplication.getCurrentAcce
 }
 ```
 
-If status `OK` is returned, the `mEnterPinDialog` is shown to the user to create a PIN code for their new identity on this device: 
+If status `OK` is returned, the `mEnterPinDialog` is shown to the user to create a PIN code for their new identity on this device:
 
 <img src="images/enter-pin-registration-with-code.png" width="266">
 
-To finalize the registration [`getMfaSdk().confirmRegistration`](https://github.com/miracl/mfa-client-sdk-android#status-confirmregistrationuser-user) and [`getMfaSdk().finishRegistration`](https://github.com/miracl/mfa-client-sdk-android#status-finishregistrationuser-user-string-multifactor) methods are called: 
+To finalize the registration [`getMfaSdk().confirmRegistration`](https://github.com/miracl/mfa-client-sdk-android#status-confirmregistrationuser-user) and [`getMfaSdk().finishRegistration`](https://github.com/miracl/mfa-client-sdk-android#status-finishregistrationuser-user-string-multifactor) methods are called:
 ```
 SampleApplication.getMfaSdk().confirmRegistration(mCurrentUser, new MPinMfaAsync.Callback<Void>() {
 
     @Override
     protected void onSuccess(@Nullable Void result) {
-        SampleApplication.getMfaSdk().finishRegistration(mCurrentUser, new String[]{pin}, new MPinMfaAsync.Callback<Void>() { 
+        SampleApplication.getMfaSdk().finishRegistration(mCurrentUser, new String[]{pin}, new MPinMfaAsync.Callback<Void>() {
             ...
         }
     }
